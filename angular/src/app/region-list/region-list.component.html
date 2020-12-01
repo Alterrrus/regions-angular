@@ -1,0 +1,23 @@
+<p>region-list works!</p>
+
+<mat-card>
+  <mat-card-title>Region List</mat-card-title>
+  <mat-card-content>
+    <table>
+      <tr>
+        <th>Наименование региона</th>
+        <th>код региона</th>
+        <th>правка</th>
+      </tr>
+
+      <tr *ngFor="let region of regions">
+        <!--<img mat-list-avatar src="{{region.giphyUrl}}" alt="{{region.name}}">-->
+        <td>{{region.name}}</td>
+        <td>{{region.code}}</td>
+        <td><a mat-button [routerLink]="['/region-edit', region.id]">edit</a></td>
+      </tr>
+
+    </table>
+  </mat-card-content>
+  <button mat-fab color="primary" [routerLink]="['/region-add']">Add</button>
+</mat-card>

@@ -1,0 +1,35 @@
+<p>region-edit works!</p>
+<mat-card>
+  <form #regionForm="ngForm" (ngSubmit)="save(regionForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{region.name ? 'Edit' : 'Add'}} Region</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="href" [(ngModel)]="region.id">
+      <mat-form-field>
+        <input matInput placeholder="Region Name" [(ngModel)]="region.name"
+               required name="name" #name>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Region Code" [(ngModel)]="region.code"
+               required name="code" #code>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!regionForm.form.valid">Save
+      </button>
+      <button mat-raised-button color="secondary" (click)="remove(region.id)"
+              *ngIf="region.id" type="button">Delete
+      </button>
+      <a mat-button routerLink="/region-list">Cancel</a>
+    </mat-card-actions>
+    <!--    <mat-card-footer>
+          <div class="giphy">
+            <img src="{{region.giphyUrl}}" alt="{{region.name}}">
+          </div>
+        </mat-card-footer>-->
+  </form>
+</mat-card>
